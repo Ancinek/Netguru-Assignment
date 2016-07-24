@@ -320,6 +320,7 @@
                         <outlet property="emailTextfield" destination="gor-Zn-6A1" id="KM2-k7-oWT"/>
                         <outlet property="passwordTextfield" destination="9Ar-lx-ikJ" id="99P-I3-Urj"/>
                         <outlet property="signUpButton" destination="nNE-Kd-Jsr" id="2F9-Nk-o0v"/>
+                        <outlet property="signUpLabel" destination="y6f-6O-Og6" id="JiE-BL-Grc"/>
                         <outlet property="signUpTC" destination="IKD-Ec-r5S" id="8Ds-1Y-Yj6"/>
                         <outlet property="usernameTextfield" destination="PLy-6H-3VD" id="KpW-In-KWo"/>
                         <outlet property="wolfImageView" destination="MqQ-3Z-zUu" id="HXc-5d-1b6"/>

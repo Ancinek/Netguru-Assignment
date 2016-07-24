@@ -180,9 +180,14 @@
         // Set constants:
         self.loginTC.constant -= finalValue;
         self.wolfImageViewTC.constant -= finalValue * imageScale;
+        if ([UIScreen mainScreen].bounds.size.width <= 500) {
+            self.wolfImageView.alpha = 0.0;
+        }
         
         [UIView animateWithDuration:animationDuration animations:^{
-            self.wolfImageView.transform = scale;
+            if ([UIScreen mainScreen].bounds.size.width > 500) {
+                self.wolfImageView.transform = scale;
+            }
             [self.view layoutIfNeeded];
         }];
     }
@@ -194,7 +199,11 @@
     self.wolfImageViewTC.constant += self.wolfMovement;
     //
     [UIView animateWithDuration: animationDuration animations:^{
-        self.wolfImageView.transform =  CGAffineTransformMakeScale(1.0, 1.0);
+        if ([UIScreen mainScreen].bounds.size.width > 500) {
+            self.wolfImageView.transform =  CGAffineTransformMakeScale(1.0, 1.0);
+        } else {
+            self.wolfImageView.alpha = 1.0;
+        }
         [self.view layoutIfNeeded];
     }];
 }

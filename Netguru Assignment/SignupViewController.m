@@ -173,6 +173,7 @@
 
 - (void)keyboardWillShow:(NSNotification *)notification {
     if (!keyboardVisible) {
+        
         NSDictionary *info = [notification userInfo];
         NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
         NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
@@ -188,11 +189,18 @@
         self.wolfMovement = finalValue * imageScale;
         
         // Set constants:
+        if ([UIScreen mainScreen].bounds.size.width > 500) {
+            self.wolfImageViewTC.constant -= finalValue * imageScale;
+        }
         self.signUpTC.constant -= finalValue;
-        self.wolfImageViewTC.constant -= finalValue * imageScale;
         
         [UIView animateWithDuration:animationDuration animations:^{
-            self.wolfImageView.transform = scale;
+            if ([UIScreen mainScreen].bounds.size.width > 500) {
+                self.wolfImageView.transform = scale;
+            } else {
+                self.wolfImageView.alpha = 0.0;
+                self.signUpLabel.alpha = 0.0;
+            }
             [self.view layoutIfNeeded];
         }];
     }
@@ -202,11 +210,17 @@
     NSDictionary *info = [notification userInfo];
     NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     self.signUpTC.constant += self.signupMovement;
-    self.wolfImageViewTC.constant += self.wolfMovement;
-//
+    if ([UIScreen mainScreen].bounds.size.width > 500) {
+        self.wolfImageViewTC.constant += self.wolfMovement;
+    }
     
     [UIView animateWithDuration: animationDuration animations:^{
-        self.wolfImageView.transform =  CGAffineTransformMakeScale(1.0, 1.0);
+        if ([UIScreen mainScreen].bounds.size.width > 500) {
+            self.wolfImageView.transform =  CGAffineTransformMakeScale(1.0, 1.0);
+        } else {
+            self.wolfImageView.alpha = 1.0;
+            self.signUpLabel.alpha = 1.0;
+        }
         [self.view layoutIfNeeded];
     }];
 }

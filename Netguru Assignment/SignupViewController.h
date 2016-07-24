@@ -16,6 +16,7 @@
 @interface SignupViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *wolfImageView;
+@property (weak, nonatomic) IBOutlet UILabel *signUpLabel;
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextfield;
