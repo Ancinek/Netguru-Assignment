@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="3j0-fK-efx" customClass="DetailView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gY0-aD-dIA">
+                    <rect key="frame" x="107" y="8" width="205" height="24"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9u-WF-X6E">
+                    <rect key="frame" x="0.0" y="106" width="320" height="44"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                    <state key="normal" title="Visit website">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="visitButtonTapped:" destination="3j0-fK-efx" eventType="touchUpInside" id="FoL-fz-ufS"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W1z-ut-0Ab">
+                    <rect key="frame" x="8" y="8" width="91.5" height="90"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="W1z-ut-0Ab" secondAttribute="height" multiplier="82:81" id="W3G-VF-caI"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zva-Ib-ewO">
+                    <rect key="frame" x="107.5" y="37" width="204.5" height="17"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="P9u-WF-X6E" secondAttribute="bottom" id="520-d8-h7l"/>
+                <constraint firstItem="P9u-WF-X6E" firstAttribute="top" secondItem="W1z-ut-0Ab" secondAttribute="bottom" constant="8" id="97E-6j-Q1T"/>
+                <constraint firstAttribute="trailing" secondItem="P9u-WF-X6E" secondAttribute="trailing" id="Fhm-vr-cmI"/>
+                <constraint firstItem="zva-Ib-ewO" firstAttribute="top" secondItem="gY0-aD-dIA" secondAttribute="bottom" constant="5" id="KWf-Ru-VeK"/>
+                <constraint firstItem="gY0-aD-dIA" firstAttribute="trailing" secondItem="3j0-fK-efx" secondAttribute="trailingMargin" id="L1P-5K-fjd"/>
+                <constraint firstItem="zva-Ib-ewO" firstAttribute="leading" secondItem="W1z-ut-0Ab" secondAttribute="trailing" constant="8" id="LRV-8H-cg7"/>
+                <constraint firstItem="gY0-aD-dIA" firstAttribute="top" secondItem="3j0-fK-efx" secondAttribute="topMargin" id="MRD-zE-TWB"/>
+                <constraint firstItem="zva-Ib-ewO" firstAttribute="trailing" secondItem="3j0-fK-efx" secondAttribute="trailingMargin" id="QY0-3p-a1F"/>
+                <constraint firstItem="gY0-aD-dIA" firstAttribute="leading" secondItem="W1z-ut-0Ab" secondAttribute="trailing" constant="8" id="Qsv-un-7xO"/>
+                <constraint firstItem="W1z-ut-0Ab" firstAttribute="height" secondItem="3j0-fK-efx" secondAttribute="height" multiplier="0.6" id="REf-Dt-DwJ"/>
+                <constraint firstItem="W1z-ut-0Ab" firstAttribute="leading" secondItem="3j0-fK-efx" secondAttribute="leadingMargin" id="f56-8A-C4d"/>
+                <constraint firstItem="P9u-WF-X6E" firstAttribute="leading" secondItem="3j0-fK-efx" secondAttribute="leading" id="gE9-cg-GVO"/>
+                <constraint firstItem="W1z-ut-0Ab" firstAttribute="top" secondItem="3j0-fK-efx" secondAttribute="topMargin" id="yjp-ay-Oll"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="abstractLabel" destination="zva-Ib-ewO" id="3DH-Wb-uyr"/>
+                <outlet property="thumbnailImageView" destination="W1z-ut-0Ab" id="eWO-UI-Zi4"/>
+                <outlet property="titleLabel" destination="gY0-aD-dIA" id="dV8-P3-hI3"/>
+                <outlet property="visitButton" destination="P9u-WF-X6E" id="kR1-Un-Uyg"/>
+            </connections>
+            <point key="canvasLocation" x="241.5" y="256"/>
+        </view>
+    </objects>
+</document>
