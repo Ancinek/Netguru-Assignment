@@ -115,9 +115,10 @@
                 case 0: // Logout
                 {
                     self.currentUser = nil;
-                    ViewController *viewController = (ViewController *)[[self.tabBarController viewControllers] objectAtIndex: 0];
-                    viewController.currentUser = nil;
-                    [self dismissViewControllerAnimated: true completion: nil];
+//                    ViewController *viewController = (ViewController *)[[self.tabBarController viewControllers] objectAtIndex: 0];
+//                    viewController.currentUser = nil;
+//                    [self dismissViewControllerAnimated: true completion: nil];
+                    [self performSegueWithIdentifier: @"BackToJoin" sender: self];
                     return;
                 }
                 default:

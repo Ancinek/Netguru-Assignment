@@ -40,13 +40,11 @@
     switch (indexPath.row) {
     case 0:
         {
-            NSLog(@"Sort selected");
             [self.delegate optionSelected: Sort];
             break;
     }
     case 1:
         {
-            NSLog(@"Cancel selected");
             [self.delegate optionSelected: Cancel];
             break;
         }

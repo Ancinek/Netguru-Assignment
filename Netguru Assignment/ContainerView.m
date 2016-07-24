@@ -27,17 +27,6 @@
     }
     return self;
 }
-- (void)initialSize:(UIViewController *)parentViewController {
-    CGRect frame = self.frame;
-    // Set frame:
-    frame.origin.x = -500;
-    frame.origin.y = -500;
-    self.frame = frame;
-    // Add as subview:
-    [parentViewController.view addSubview: self];
-
-    [self setBackgroundColor: [UIColor blackColor]];
-}
 
 - (void)constraintSetup:(UIView *)view {
     self.frame = view.frame;
@@ -81,7 +70,6 @@
     xConstraint.active = true;
     yConstraint.active = true;
     [[self superview] layoutIfNeeded];
-    NSLog(@"Constraints in initialPosition are OK");
 }
 
 - (void) displayContentView: (UIView *)content {

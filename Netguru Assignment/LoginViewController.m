@@ -20,6 +20,7 @@
 
 @synthesize context;
 @synthesize currentStatusView;
+@synthesize keyboardVisible;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,6 +48,7 @@
         [textfield placeholderColor:[[UIColor whiteColor] colorWithAlphaComponent: 0.6] withText: [texts objectAtIndex: i]];
         textfield.delegate = self;
     }
+    [self observeKeyboard];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -150,5 +152,61 @@
 - (BOOL)shouldAutorotate {
     return false;
 }
+
+#pragma mark - Keyboard notifications:
+- (void)observeKeyboard {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    if (!keyboardVisible) {
+        NSDictionary *info = [notification userInfo];
+        NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
+        NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+        CGRect keyboardFrame = [kbFrame CGRectValue];
+        // Calculate and animate movement
+        CGFloat keyboardY = keyboardFrame.origin.y;
+        CGFloat difference = self.logInButton.frame.origin.y - keyboardY;
+        CGFloat finalValue = difference + (self.logInButton.frame.size.height * 1.5);
+        self.signupMovement = finalValue;
+        CGFloat wolfImageHeight = self.wolfImageView.frame.size.height;
+        CGFloat imageScale = (wolfImageHeight - finalValue) / wolfImageHeight;
+        CGAffineTransform scale = CGAffineTransformMakeScale(imageScale, imageScale);
+        self.wolfMovement = finalValue * imageScale;
+        
+        // Set constants:
+        self.loginTC.constant -= finalValue;
+        self.wolfImageViewTC.constant -= finalValue * imageScale;
+        
+        [UIView animateWithDuration:animationDuration animations:^{
+            self.wolfImageView.transform = scale;
+            [self.view layoutIfNeeded];
+        }];
+    }
+}
+- (void)keyboardWillHide:(NSNotification *)notification {
+    NSDictionary *info = [notification userInfo];
+    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    self.loginTC.constant += self.signupMovement;
+    self.wolfImageViewTC.constant += self.wolfMovement;
+    //
+    [UIView animateWithDuration: animationDuration animations:^{
+        self.wolfImageView.transform =  CGAffineTransformMakeScale(1.0, 1.0);
+        [self.view layoutIfNeeded];
+    }];
+}
+
+- (void)keyboardDidShow:(NSNotification *)notification {
+    keyboardVisible = true;
+}
+
+- (void)keyboardDidHide:(NSNotification *)notification {
+    keyboardVisible = false;
+}
+
+
 
 @end

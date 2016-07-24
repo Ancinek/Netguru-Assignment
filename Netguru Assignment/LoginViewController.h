@@ -17,12 +17,23 @@
 
 @interface LoginViewController : UIViewController <UITextFieldDelegate>
 
+
+@property (weak, nonatomic) IBOutlet UIImageView *wolfImageView;
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextfield;
 @property (weak, nonatomic) IBOutlet UIButton *logInButton;
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
 @property (strong, nonatomic) StatusView *currentStatusView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *wolfImageViewTC;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *loginTC;
+
+@property (assign) BOOL keyboardVisible;
+
+
+@property (assign) CGFloat wolfMovement;
+@property (assign) CGFloat signupMovement;
 
 - (StatusView *)errorStatusWitMessage:(NSString *)message;
 - (StatusView *)loggingStatus;

@@ -15,10 +15,19 @@
 
 @interface SignupViewController : UIViewController <UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UIImageView *wolfImageView;
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextfield;
 @property (weak, nonatomic) IBOutlet UIButton *signUpButton;
+
+// Constraints:
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *wolfImageViewTC;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *signUpTC;
+@property (assign) BOOL keyboardVisible;
+
+@property (assign) CGFloat wolfMovement;
+@property (assign) CGFloat signupMovement;
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
 @property (strong, nonatomic) StatusView *currentStatusView;

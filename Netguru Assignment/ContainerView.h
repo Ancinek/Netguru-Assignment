@@ -28,14 +28,10 @@ typedef enum {
 @property (assign) CGFloat height;
 
 // Functions:
-- (void)initialSize:(UIViewController *)parentViewController;
-- (void)initialSize:(UIViewController *)parentViewController
-           withSize:(CGSize)size;
 - (void)initialPosition:(DisplayPosition)initialPosition
    parentViewController:(UIViewController *)parentViewController;
 - (void)show;
 - (void)hide;
-- (void)updatePosition;
 
 - (void)displayContentController:(UIViewController*)content;
 - (void)displayContentView:(UIView *)content;

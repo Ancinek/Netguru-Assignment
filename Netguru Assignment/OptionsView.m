@@ -52,7 +52,6 @@
     tableViewController.view.frame = self.frame;
     [self addSubview: tableViewController.view];
     currentEmbeddedTVC = tableViewController;
-    NSLog(@"updatedEmbededTVC frame - %@", NSStringFromCGRect(currentEmbeddedTVC.view.frame));
     
     if (self.superview) {
         ContainerView* superView = (ContainerView *)self.superview;
