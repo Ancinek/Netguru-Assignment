@@ -177,35 +177,41 @@
         CGAffineTransform scale = CGAffineTransformMakeScale(imageScale, imageScale);
         self.wolfMovement = finalValue * imageScale;
         
-        // Set constants:
-        self.loginTC.constant -= finalValue;
-        self.wolfImageViewTC.constant -= finalValue * imageScale;
-        if ([UIScreen mainScreen].bounds.size.width <= 500) {
-            self.wolfImageView.alpha = 0.0;
-        }
-        
-        [UIView animateWithDuration:animationDuration animations:^{
-            if ([UIScreen mainScreen].bounds.size.width > 500) {
-                self.wolfImageView.transform = scale;
+        if (finalValue > 0) {
+            // Set constants:
+            self.loginTC.constant -= finalValue;
+            self.wolfImageViewTC.constant -= finalValue * imageScale;
+            if ([UIScreen mainScreen].bounds.size.width <= 500) {
+                self.wolfImageView.alpha = 0.0;
             }
-            [self.view layoutIfNeeded];
-        }];
+            
+            [UIView animateWithDuration:animationDuration animations:^{
+                if ([UIScreen mainScreen].bounds.size.width > 500) {
+                    self.wolfImageView.transform = scale;
+                }
+                [self.view layoutIfNeeded];
+            }];
+        }
     }
 }
 - (void)keyboardWillHide:(NSNotification *)notification {
-    NSDictionary *info = [notification userInfo];
-    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    self.loginTC.constant += self.signupMovement;
-    self.wolfImageViewTC.constant += self.wolfMovement;
-    //
-    [UIView animateWithDuration: animationDuration animations:^{
-        if ([UIScreen mainScreen].bounds.size.width > 500) {
-            self.wolfImageView.transform =  CGAffineTransformMakeScale(1.0, 1.0);
-        } else {
-            self.wolfImageView.alpha = 1.0;
+    if (keyboardVisible) {
+        NSDictionary *info = [notification userInfo];
+        NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+        if (self.signupMovement > 0) {
+            self.loginTC.constant += self.signupMovement;
+            self.wolfImageViewTC.constant += self.wolfMovement;
+            //
+            [UIView animateWithDuration: animationDuration animations:^{
+                if ([UIScreen mainScreen].bounds.size.width > 500) {
+                    self.wolfImageView.transform =  CGAffineTransformMakeScale(1.0, 1.0);
+                } else {
+                    self.wolfImageView.alpha = 1.0;
+                }
+                [self.view layoutIfNeeded];
+            }];
         }
-        [self.view layoutIfNeeded];
-    }];
+    }
 }
 
 - (void)keyboardDidShow:(NSNotification *)notification {
